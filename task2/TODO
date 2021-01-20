@@ -1,0 +1,19 @@
+
+1. Input Category IDs
+2. Running all 20K Amazon categories through the Category Research API
+3. Get ASIN numbers
+4. Run all ASINs in the Product Analysis API with requests for offers form other compenies.
+5. Get result
+
+
+
+
+Using Category Research API-> Product Analysis API
+Running all 20K Amazon categories through the Category Research API (Documentation- 
+For each category, run all of its ASINs in the Product Analysis API with requests for AMAZON_US, WALMART_US and EBAY_US offers.
+Complete list of AMAZON_US categories exists here
+
+Follow the categories that are being retrieved for each product and try to map by those. As an example, let’s take the watches category from Amazon (ID: 6358540011).
+Assuming we ran that through the category API, and received a single  - B000GB1R7S
+We ran it through Product Analysis asking for AMAZON_US,EBAY_US,WALMART_US
+We have received the following categories for this ASIN: 
