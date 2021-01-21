@@ -9,10 +9,7 @@ async function CategorygetReadyResultsApi(timesToCall) {
   const query =
     "https://api.algopix.com/v3/category/analysisAsync/getReadyResults";
   
-    
   try {
-   
- 
     const apiCallPromisesArr = [];
     for (let i = 0; i < timesToCall; i++) {
       // 20 is the numbers of requests (Request for a category:maxItems/10 times)
