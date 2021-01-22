@@ -1,13 +1,11 @@
-const { CategorygetReadyResultsApi } = require("./CategortGetReadyApiCall");
+const { CategorygetReadyResultsApi } = require("./Categort-get-ready-api-requst");
 
 async function getReadyResults(exampleResponsetObj) {
-    // API GET /category/analysisAsync
-    // make call (queries)
-    // get "requestId"
+
     let counter = 1;
     const resultIDs = [];
     try {
-      //let timesToCall = Math.ceil(exampleResponsetObj["items"]/10)
+      //api call
       const allApiCallResults = await CategorygetReadyResultsApi(exampleResponsetObj);
       for (let i = 0; i < allApiCallResults.length; i++) { 
         // get the job process status
@@ -15,16 +13,16 @@ async function getReadyResults(exampleResponsetObj) {
         let ApiCallResults = allApiCallResults[i].data.result;
         readyForFetchStatus ? ApiCallResults : console.log("Jobs processing is empty");
         for (let j = 0; j < ApiCallResults.length; j++) {
-          console.log(counter + ") " + ApiCallResults[j].result.aid);
+          //console.log(counter + ") " + ApiCallResults[j].result.aid);
           resultIDs.push(ApiCallResults[j].result.aid)
-         // console.log(resultIDs)
           counter++; 
         }
       }
     } catch (err) {
       console.log("Error runProcess" + err);
     }
-    console.log(resultIDs)
+    //console.log(resultIDs)
+    return resultIDs
   }
 
 
