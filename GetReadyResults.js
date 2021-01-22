@@ -7,8 +7,8 @@ async function getReadyResults(exampleResponsetObj) {
     let counter = 1;
     const resultIDs = [];
     try {
-      let timesToCall = Math.ceil(exampleResponsetObj["items"]/10)
-      const allApiCallResults = await CategorygetReadyResultsApi(timesToCall);
+      //let timesToCall = Math.ceil(exampleResponsetObj["items"]/10)
+      const allApiCallResults = await CategorygetReadyResultsApi(exampleResponsetObj);
       for (let i = 0; i < allApiCallResults.length; i++) { 
         // get the job process status
         let readyForFetchStatus = allApiCallResults[i].data.asyncApiStatus.jobsStatus // check if true (asyncApiStatus.jobsStatus.requestID."jobResultsReadyForFetch": true)

@@ -16,7 +16,7 @@ async function app() {
   try {
     // API GET: /searchAsync -> Returns market research data regarding an item.
     //const responsetObj = await requestForCategoty(); //<- obj with request id and how many result requested
-    let exampleResponsetObj = {"requestId": "c973be46-90f7-4171-b9e0-b963617170e1", "items": 200}
+    let exampleResponsetObj = {"requestId": "cfb80be5-f11d-4f77-9ed9-6ee6a46e12dc", "items": 200}
 {
     // check if requestID "jobResultsReadyForFetch": true
         //   get "requestId" "requestId": "52a101e1-6872-4fa6-88d8-a352474a8033",
