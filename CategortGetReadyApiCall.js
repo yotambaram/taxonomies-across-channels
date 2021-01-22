@@ -12,8 +12,9 @@ async function CategorygetReadyResultsApi(timesToCall) {
   try {
     const apiCallPromisesArr = [];
     for (let i = 0; i < timesToCall; i++) {
-      // 20 is the numbers of requests (Request for a category:maxItems/10 times)
+      
       apiCallPromisesArr.push(axios.get(query, { headers: headersObj }));
+
     }
     
     let result = Promise.all(apiCallPromisesArr);
