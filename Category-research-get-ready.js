@@ -1,6 +1,6 @@
-const { CategorygetReadyResultsApi } = require("./Categort-get-ready-api-requst");
+const { CategorygetReadyResultsApi } = require("./Category-research-ready-api-request");
 
-async function getReadyResults(exampleResponsetObj) {
+async function categortGetReadyResults(exampleResponsetObj) {
 
     let counter = 1;
     const resultIDs = [];
@@ -26,4 +26,4 @@ async function getReadyResults(exampleResponsetObj) {
   }
 
 
-  module.exports.getReadyResults = getReadyResults;
+  module.exports.categortGetReadyResults = categortGetReadyResults;

@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-async function CategorygetReadyResultsApi(exampleResponsetObj) {
+async function CategoryGetReadyResultsApi(exampleResponsetObj) {
   
   let timesToCall = Math.ceil(exampleResponsetObj["items"]/10);
   let currentRequestId = exampleResponsetObj.requestId
@@ -32,4 +32,4 @@ async function CategorygetReadyResultsApi(exampleResponsetObj) {
   }
 }
 
-module.exports.CategorygetReadyResultsApi = CategorygetReadyResultsApi;
+module.exports.CategoryGetReadyResultsApi = CategoryGetReadyResultsApi;
