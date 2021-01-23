@@ -18,7 +18,7 @@ if (process.env.NODE_ENV !== "production") {
 async function app() {
   try {
     /* 1) GET INPUT ID NUMBERS */
-    const FAKEINPUT = [{id: 14284837011, numberOfResults: 4},]
+    const FAKEINPUT = [{id: 14284837011, numberOfResults: 7}, {id: 14284832011, numberOfResults: 13}]
     /* 2) API Category Research API GET: /searchAsync -> Returns market research data regarding an item. */
     const requestIdsArr = await requestForCategoty(FAKEINPUT);
     console.log(requestIdsArr)
