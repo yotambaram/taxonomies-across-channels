@@ -20,22 +20,15 @@ async function requestForCategoty(InputDataArr) {
     const apiCallPromisesArr = [];
     for (let i = 0; i < queriesArr.length; i++) {
       let query = queriesArr[i];
-      let timesToCall = Math.ceil(InputDataArr[i].numberOfResults / 10);
-      for (let j = 0; j < timesToCall; j++) {
-        apiCallPromisesArr.push(axios.get(query, { headers: headersObj }));
-        
-      }
+      apiCallPromisesArr.push(axios.get(query, { headers: headersObj }));
     }
     
     const result = [];
 
-
     return axios.all(apiCallPromisesArr).then(
       
       axios.spread((...args) => {
-        console.log(args)
         for (let i = 0; i < args.length; i++) {
-          console.log("XXX" + args[i])
           // TODO: if succss/200
           result.push(args[i].data.requestId);
         }

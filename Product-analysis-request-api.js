@@ -34,7 +34,8 @@ return axios.all(promises)
                  
         }
         return result
-    }))
+       })
+    )
 
   } catch (err) {
     console.log("Erorr identificationApiClient");
