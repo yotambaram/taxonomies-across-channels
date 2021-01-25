@@ -1,9 +1,15 @@
 const axios = require("axios");
 
-async function CategoryGetReadyResultsApi(exampleResponsetObj) {
-  
-  let timesToCall = Math.ceil(exampleResponsetObj["items"]/10);
-  let currentRequestId = exampleResponsetObj.requestId
+async function CategoryGetReadyResultsApi(exampleResponsetArr) {
+  //   // exampleResponsetObj = [{
+//     "browseNodeId": 6358540011,
+//     "resultRequested": 30,
+//     "requestId": "1652a40a-0349-45e3-9da6-a9efde766332"
+// }]
+
+
+  //let timesToCall = Math.ceil(20/*exampleResponsetArr[0]["resultRequested"]/10*/);
+  let currentRequestId = exampleResponsetArr.requestId
   const headersObj = {
     "X-APP-ID": process.env.X_APP_ID,
     "X-API-KEY": process.env.X_API_KEY,
@@ -12,20 +18,23 @@ async function CategoryGetReadyResultsApi(exampleResponsetObj) {
     "https://api.algopix.com/v3/category/analysisAsync/getReadyResults";
   
   try {
+    let result
     const apiCallPromisesArr = [];
-    for (let i = 0; i < timesToCall; i++) {
-      
-      apiCallPromisesArr.push(axios.request({
-        method: "get",
-        headers: headersObj,
-        url: query
-      })
-    );
+    const getReadyResultsRec = () => {
+        apiCallPromisesArr.push(axios.request({
+          method: "get",
+          headers: headersObj,
+          url: query
+        })
+      );
+
+      result = Promise.all(apiCallPromisesArr);
+      console.log(result)
+      //return result;
 
     }
-    
-    let result = Promise.all(apiCallPromisesArr);
-    return result;
+    getReadyResultsRec()
+    return result
   } catch (err) {
     console.log("Erorr identificationApiClient");
     console.log(err);

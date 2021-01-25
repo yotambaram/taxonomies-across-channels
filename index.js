@@ -16,25 +16,35 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 async function app() {
+  myWordersList = []
+
   try {
     /* 1) GET INPUT ID NUMBERS */
-    const FAKEINPUT = [{id: 14284837011, numberOfResults: 7}, {id: 14284832011, numberOfResults: 13}]
+    const FAKEInput = [{id: 14284837011, numberOfResults: 7}, {id: 14284832011, numberOfResults: 13}]
     /* 2) API Category Research API GET: /searchAsync -> Returns market research data regarding an item. */
-    const requestIdsArr = await requestForCategoty(FAKEINPUT);
-    console.log(requestIdsArr)
+    //const requestIdsArr = await requestForCategoty(FAKEINPUT);
+
     //fetch
+    const FAKECategoryResultWorker = {
+      "browseNodeId": 6358540011,
+      "resultRequested": 30,
+      "requestId": "082c71cc-f980-4bda-bb8c-91230454ecb6"
+   }
 
-    /* *** API Category Research API GET: ​/category​/analysisAsync​/getReadyResults -> Get all the ready results.*/
-    // const requestIdResultsArr = await categortGetReadyResults(
-    //   /*responsetObj*/ exampleResponsetObj
-    // );
-
-    /* *** API Product Analysis API GET: /searchAsync -> Returns market research data regarding an item.*/
+   // Put workers in List/Queue
+   
+   myWordersList.push(FAKECategoryResultWorker)
+    /* 3) *** API Category Research API GET: ​/category​/analysisAsync​/getReadyResults -> Get all the ready results.*/
+    const requestIdResultsArr = await categortGetReadyResults(
+      /*responsetObj*/ FAKECATEGORYREQUESTID
+    );
+      console.log(requestIdResultsArr[0])
+    /* 4) *** API Product Analysis API GET: /searchAsync -> Returns market research data regarding an item.*/
     // const requestsIdArr = await (requestForProductAnalysis(/*requestIdResultsArr*/)); //<- obj with request id and how many result requested
     // console.log(requestsIdArr)
 
 
-    /* *** API Product Analysis API GET: ​/searchAsync/getReadyResults -> Returns markets research data regarding on item*/
+    /* 6) *** API Product Analysis API GET: ​/searchAsync/getReadyResults -> Returns markets research data regarding on item*/
     // const requestIdResultsArr = await ProductAnalysisGetReadyResults(
     //    /*requestsIdArr*/
     // );
