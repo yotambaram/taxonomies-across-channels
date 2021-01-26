@@ -10,6 +10,8 @@ const { categortGetReadyResults } = require("./Category-research-get-ready");
 const { requestForProductAnalysis } = require("./Product-analysis-request-api");
 const { ProductAnalysisGetReadyResults } = require("./Product-analysis-get-ready");
 
+const csvW = require("./CsvWriter");
+
 // Using for .env file to add API ID and KEY.
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -20,26 +22,38 @@ async function app() {
 
   try {
     /* 1) GET INPUT ID NUMBERS */
-    const FAKEInput = [{id: 14284837011, numberOfResults: 7}, {id: 14284832011, numberOfResults: 13}]
-    /* 2) API Category Research API GET: /searchAsync -> Returns market research data regarding an item. */
-    //const requestIdsArr = await requestForCategoty(FAKEINPUT);
+    //const input = [{id: 2975359011, numberOfResults: 92},{id: 2975359011, numberOfResults: 91}]
 
-    //fetch
-    const FAKECategoryResultWorker = {
-      "browseNodeId": 6358540011,
-      "resultRequested": 30,
-      "requestId": "082c71cc-f980-4bda-bb8c-91230454ecb6"
-   }
 
-   // Put workers in List/Queue
+    /* 2) API Category Research GET: /searchAsync -> Returns market research data regarding an item. */
+    // const requestIdsArr = await requestForCategoty(input);
+    // console.log(requestIdsArr)
+   /* fetch result
+    const FAKECategoryResultWorker = [{
+      'id: ': 14284837011,
+      requestId: '3cd6027b-3c3b-40db-869c-00975c148791',
+      numberOfResultAskFor: 8
+    },{
+      'id: ': 555555,
+      requestId: 'fsdfdsfsdfsd3ciuyiuyiuyiuyiyuiuy',
+      numberOfResultAskFor: 5
+    },{
+      'id: ': 14666666,
+      requestId: 'ccsd60hfghfghfghfghfghfghfghfg1',
+      numberOfResultAskFor: 5
+    }]; */
+    
+    /* 3) Save Workers List/Queue (should save to db or files) */
+    //const whatisit = await csvW.csvWriter(requestIdsArr) // return true when finished
+
    
-   myWordersList.push(FAKECategoryResultWorker)
-    /* 3) *** API Category Research API GET: ​/category​/analysisAsync​/getReadyResults -> Get all the ready results.*/
-    const requestIdResultsArr = await categortGetReadyResults(
-      /*responsetObj*/ FAKECATEGORYREQUESTID
-    );
-      console.log(requestIdResultsArr[0])
-    /* 4) *** API Product Analysis API GET: /searchAsync -> Returns market research data regarding an item.*/
+
+    /* 4) *** API Category Research API GET: ​/category​/analysisAsync​/getReadyResults -> Get all the ready results.*/
+    //whatisit ? "keep going" : "didnt write";
+    const requestIdResultsArr = await categortGetReadyResults();
+     //  console.log(requestIdResultsArr)
+
+    /* 5) *** API Product Analysis API GET: /searchAsync -> Returns market research data regarding an item.*/
     // const requestsIdArr = await (requestForProductAnalysis(/*requestIdResultsArr*/)); //<- obj with request id and how many result requested
     // console.log(requestsIdArr)
 
