@@ -4,8 +4,7 @@ const { Parser } = require('json2csv');
 const newLine = '\r\n';
 
 const csvWriterTwo = (dataRes) => {
-  console.log("typeof dataRes: " +typeof dataRes)
-  console.log(dataRes.requestId)
+
   //console.log("TTTTT" + JSON.stringify(dataRes))
   let path = dataRes.requestId + ".csv"
   console.log("TEST  "+path)
