@@ -10,7 +10,7 @@ const { categortGetReadyResults } = require("./Category-research-get-ready");
 const { requestForProductAnalysis } = require("./Product-analysis-request-api");
 const { ProductAnalysisGetReadyResults } = require("./Product-analysis-get-ready");
 
-const csvW = require("./CsvWriter");
+const csvW = require("./Csv-writer");
 
 // Using for .env file to add API ID and KEY.
 if (process.env.NODE_ENV !== "production") {

@@ -1,7 +1,7 @@
 const { CategoryGetReadyResultsApi } = require("./Category-research-ready-api-request");
-const {csvReader} = require("./CsvReader")
+const {csvReader} = require("./Csv-reader")
 
-
+const {csvWriterTwo} = require("./Csv-writer-two");
 
 async function categortGetReadyResults() {
   const query = "https://api.algopix.com/v3/category/analysisAsync/getReadyResults";
@@ -49,24 +49,26 @@ async function categortGetReadyResults() {
     for (let i = 0; i < dataResultsArr.length; i++) {     
       items.pushToResult(dataResultsArr[i].result.aid)
     }
-    console.log(items)
+    //console.log(items)
     
+    //Save Data
+    csvWriterTwo(items)
+
 
     // X add data to list\queue
     //console.log(allApiCallResults[0].data.asyncApiStatus.jobsStatus);
 
-   // let currentJobsStatus = allApiCallResults[0].data.asyncApiStatus.jobsStatus[
-    //    worker.requestId
-    //  ];
-    // If there are no jobs
-   // !currentJobsStatus
-   //   ? /* remove requestId from queue */ (newDataExample.localFetched = true)
-    //  : "";
+   let currentJobsStatus = allApiCallResults[0].data.asyncApiStatus
+   //console.log(currentJobsStatus);
+    //If there are no jobs
+  //  !currentJobsStatus
+  //    ? /* remove requestId from queue */ (newDataExample.localFetched = true)
+  //    : "";
 
-   // let ProgressingDone = currentJobsStatus.ProgressStatus === "DONE";
-   // let fetchDone = currentJobsStatus.jobResultsReadyForFetch === true;
-    // If list\queue is not empty, keep progress. alse, stop working here
-    //!ProgressingDone || ProgressingDone && fetchDone ? categortGetReadyResults(workerList) : /* remove it from queue */newDataExample.localFetched = true;
+  //  let ProgressingDone = currentJobsStatus.ProgressStatus === "DONE";
+  //  let fetchDone = currentJobsStatus.jobResultsReadyForFetch === true;
+  //   //If list\queue is not empty, keep progress. alse, stop working here
+  //   !ProgressingDone || ProgressingDone && fetchDone ? categortGetReadyResults(workerList) : /* remove it from queue */newDataExample.localFetched = true;
   } catch (err) {
     console.log("Error runProcess" + err);
   }

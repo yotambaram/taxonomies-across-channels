@@ -3,6 +3,7 @@ const json2csv = require("json2csv");
 const { Parser } = json2csv;
 
 const csvWriter = (dataRes) => {
+  console.log("TTTTT" + dataRes)
   try {
     const json2csvParser = new Parser();
     const csv = json2csvParser.parse(dataRes);
