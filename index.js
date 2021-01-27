@@ -29,15 +29,15 @@ async function app() {
 
    /* fetch result */
     const FAKECategoryResultWorker = [{
-      'id: ': 14284837011,
+      id: 14284837011,
       requestId: '9d478491-5f98-4554-88d1-2306f0458dc4',
       numberOfResultAskFor: 8
     },{
-      'id: ': 555555,
-      requestId: 'a230bd23-2c17-49c6-9af4-e7eeeb7eceda',
+      id: 555555,
+      requestId: 'e35c1dbd-8a21-484e-871b-6c3ac985987a',
       numberOfResultAskFor: 5
     },{
-      'id: ': 14666666,
+      id: 14666666,
       requestId: 'b2e32e0c-4e18-447f-8d2b-cb58b314f4ba',
       numberOfResultAskFor: 5
     }]; 

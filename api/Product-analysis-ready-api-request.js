@@ -26,7 +26,7 @@ async function productAnalysisGetReadyResultsApi(requestIDsArr) {
     }
     
     let result = Promise.all(apiCallPromisesArr);
-    console.log("Product-analysis-ready-api-request result: " + result)
+    //console.log("Product-analysis-ready-api-request result: " + result)
     return result;
   } catch (err) {
     console.log("Erorr identificationApiClient");

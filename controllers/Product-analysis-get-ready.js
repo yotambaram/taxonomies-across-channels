@@ -15,8 +15,8 @@ async function ProductAnalysisGetReadyResults(/*exampleResponsetArr*/) {
           categoriesArr = offersArr[i].marketSpecificData.amazonCategories;
           
           for (let j = 0; j < categoriesArr.length; j++) {
-            console.log({"id":categoriesArr[j].id, "name": categoriesArr[j].name})
-            console.log(categories[j])
+            //console.log({"id":categoriesArr[j].id, "name": categoriesArr[j].name})
+            //console.log(categories[j])
             
           }
         }
