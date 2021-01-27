@@ -30,16 +30,20 @@ async function app() {
    /* fetch result */
     const FAKECategoryResultWorker = [{
       id: 14284837011,
-      requestId: '9d478491-5f98-4554-88d1-2306f0458dc4',
-      numberOfResultAskFor: 8
+      requestId: "10a5cf6e-93ea-44fa-a96e-1f2bcc8c1a52",
+      numberOfResultAskFor: 33
     },{
-      id: 555555,
-      requestId: 'e35c1dbd-8a21-484e-871b-6c3ac985987a',
-      numberOfResultAskFor: 5
+      id: 98674554234,
+      requestId: 'e01e7495-e2e9-41c6-bf60-41ba1c168cad',
+      numberOfResultAskFor: 22
     },{
-      id: 14666666,
-      requestId: 'b2e32e0c-4e18-447f-8d2b-cb58b314f4ba',
-      numberOfResultAskFor: 5
+      id: 7567567566,
+      requestId: 'e01e7495-e2e9-41c6-bf60-41ba1c168cad',
+      numberOfResultAskFor: 11
+    },{
+      id: 5234636546,
+      requestId: '4e02f465-1b90-41fb-aae2-60a219a88a9a',
+      numberOfResultAskFor: 44
     }]; 
     
     /* 3) Save Workers List/Queue (should save to db or files) */

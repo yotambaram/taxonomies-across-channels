@@ -4,7 +4,6 @@ const fs = require("fs");
 const headers = ["requestId", "browseNodeId", "numberOfResultAskedFor", "aid"]
 
 async function csvReader(path) {
-  console.log("csvReader path", path)
   try {
     if (fs.existsSync(path)) {
     return csv()

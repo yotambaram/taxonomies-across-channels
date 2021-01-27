@@ -16,15 +16,17 @@ const updateLine = (index, allApiCallResults, categoryDB) => {
   let apiResult = allApiCallResults[0].data.result
   // Update DB resultAid
   let newItemsArr = [];
-  let dbResultAidArr = JSON.parse(
-    JSON.stringify(categoryDB[index].resultAid)
-  );
+
+  let dbResultAidArr = JSON.parse(categoryDB[index].resultAid);
   // Put new aid results in array
   for (let i = 0; i < apiResult.length; i++) {
-    console.log("Updating");
+    
     newItemsArr.push(apiResult[i].result.aid);
   }
+  console.log("newItemsArr",newItemsArr)
   // Merge old array with New array
+  console.log("Updating");
+  //console.log(dbResultAidArr, newItemsArr);
   categoryDB[index].resultAid = dbResultAidArr.concat(newItemsArr);
 
   return categoryDB;
@@ -34,9 +36,10 @@ const updateLine = (index, allApiCallResults, categoryDB) => {
 async function createLine(allApiCallResults, categoryDB, pathWorkers) {
   console.log("Creating line");
   // create new
-  let newRequestId = await NewItemBuilder(allApiCallResults, pathWorkers);
+  let newRequestIdItem = await NewItemBuilder(allApiCallResults, pathWorkers);
+  newRequestIdItemCleaned = JSON.parse(JSON.stringify(newRequestIdItem));
   // write to db
-  categoryDB[categoryDB.length] = JSON.parse(JSON.stringify(newRequestId));
+  categoryDB[categoryDB.length] = newRequestIdItemCleaned
   return categoryDB;
 }
 
@@ -51,13 +54,14 @@ async function categoryResearchGetRead() {
 
     async function getReadHelper(categoryDB) {
      
+      devCounter++
     
       devCounter++;
       try {
         /* Call API*/
         const allApiCallResults = await CategoryGetReadyResultsApi(query);
 
-        allApiCallResults[0].data.result[0].requestId ? console.log("START WORK") : console.log.og("NO RESULTS");
+        allApiCallResults[0].data.result[0].requestId ? console.log("START WORK") : console.log.og("NO RESULTS")/*, csvWriter(categoryDB, pathDb)*/;
         // If there are no DB data create one
         if (categoryDB.length === 0 || !categoryDB) {
           console.log("NO DB");
@@ -80,27 +84,27 @@ async function categoryResearchGetRead() {
           index > -1 ? categoryDB = await updateLine(index, allApiCallResults, categoryDB) : categoryDB = await createLine(allApiCallResults, categoryDB, pathWorkers);
         }
         
-        let currentJobsStatus = allApiCallResults[0].data.asyncApiStatus;
+         let currentJobsStatus = allApiCallResults[0].data.asyncApiStatus;
         //   //   //If there are no jobs
         //     !currentJobsStatus
         //       ? /* remove requestId from queue */ (newDataExample.localFetched = true)
         //      : "";
-        // let ProgressingDone = currentJobsStatus.ProgressStatus === "DONE";
-        // let fetchDone = currentJobsStatus.jobResultsReadyForFetch === true;
-        // //If list\queue is not empty, keep progress. alse, stop working here
-        // !ProgressingDone || (ProgressingDone && fetchDone)
-        //   ? getReadHelper(categoryDB)
-        //     : /* remove it from worker-list */ "";
+        let ProgressingDone = currentJobsStatus.ProgressStatus === "DONE";
+        let fetchDone = currentJobsStatus.jobResultsReadyForFetch === true;
+        //If list\queue is not empty, keep progress. alse, stop working here
+        !ProgressingDone && devCounter < 3 || (ProgressingDone && fetchDone && devCounter < 3)
+          ? getReadHelper(categoryDB)
+            : /* remove it from worker-list */ "";
         
       } catch (err) {
         console.log("Error runProcess" + err);
       }
-      console.log("done fetching")
+      //console.log("done fetching", categoryDB);
       return categoryDB;
     }
 
   categoryDB = await getReadHelper(categoryDB)
-  console.log(categoryDB)
+  //console.log("END",categoryDB)
   let ready = await csvWriter(categoryDB, pathDb);
   console.log("printed", ready)
   //return categoryDB;
