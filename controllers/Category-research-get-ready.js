@@ -1,8 +1,8 @@
 const {
   CategoryGetReadyResultsApi,
-} = require("../api/Category-research-ready-api-request");
-const { csvReader } = require("../services/Csv-reader");
-const { csvWriter } = require("../services/Csv-writer");
+} = require("../api/category-research-ready-api-request");
+const { csvReader } = require("../services/csv-reader");
+const { csvWriter } = require("../services/csv-writer");
 const { NewItemBuilder } = require("../services/db-Item-builder");
 
 //if exist: update DB by add aid to array

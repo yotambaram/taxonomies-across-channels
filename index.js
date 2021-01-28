@@ -4,13 +4,13 @@
 // Run all ASINs in the Product Analysis API with requests for offers form other compenies.
 // Get result
 
-const { requestForCategoty } = require("./api/Category-research-request-api");
-const { categoryResearchGetRead } = require("./controllers/Category-research-get-ready");
+const { requestForCategoty } = require("./api/category-research-request-api");
+const { categoryResearchGetRead } = require("./controllers/category-research-get-ready");
 
-const { requestForProductAnalysis } = require("./api/Product-analysis-request-api");
-const { ProductAnalysisGetReadyResults } = require("./controllers/Product-analysis-get-ready");
+const { requestForProductAnalysis } = require("./api/product-analysis-request-api");
+const { ProductAnalysisGetReadyResults } = require("./controllers/product-analysis-get-ready");
 
-const {csvWriter} = require("./services/Csv-writer")
+const {csvWriter} = require("./services/csv-writer")
 
 // Using for .env file to add API ID and KEY.
 if (process.env.NODE_ENV !== "production") {

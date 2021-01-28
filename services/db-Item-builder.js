@@ -1,6 +1,6 @@
 
 const Item = require("../models/Item")
-const {csvReader} = require("./Csv-reader")
+const {csvReader} = require("./csv-reader")
 
 async function NewItemBuilder(allApiCallResults, path) {
     let workersDB = await csvReader(path)

@@ -1,4 +1,4 @@
-const { productAnalysisGetReadyResultsApi } = require("../api/Product-analysis-ready-api-request");
+const { productAnalysisGetReadyResultsApi } = require("../api/product-analysis-ready-api-request");
 
 async function ProductAnalysisGetReadyResults(/*exampleResponsetArr*/) {
     {}
