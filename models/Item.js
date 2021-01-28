@@ -3,10 +3,13 @@ class Item {
       this.requestId = requestId;
       this.browseNodeId = browseNodeId;
       this.numberOfResultAskedFor = numberOfResultAskedFor
-      this.resultAid = new Array;
+      this.resultAId = "[]";
     }
     pushToResult  (aid){
-      this.resultAid.push(aid)
+      let parsedThisResultAId = JSON.parse(this.resultAId)
+      parsedThisResultAId.push(aid)
+      let ResultAIdToString = JSON.stringify(parsedThisResultAId)
+      this.resultAId = ResultAIdToString
     }
   }
 
