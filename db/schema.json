@@ -1,0 +1,327 @@
+{
+"timestamp": 1611345508,
+    "status": "SUCCESS",
+    "statusCode": 200,
+    "statusMessage": "Ok",
+    "requestId": "101fb2ed-961f-4ec6-861c-4d0c398cac6f",
+    "result": [
+        {
+            "timestamp": 1611345504,
+            "status": "SUCCESS",
+            "statusCode": 200,
+            "requestId": "c62db1f8-cf71-4463-a7d3-19a4687882b7",
+            "result": {
+                "itemDetails": {
+                    "aid": "AIDSICE71001",
+                    "ids": {
+                        "ASIN": [
+                            "B018HTGSN8"
+                        ],
+                        "UPC": [
+                            "712243905256"
+                        ],
+                        "EAN": [
+                            "0712243905256"
+                        ],
+                        "PARENT_ASIN": [
+                            "B081GYWPS2"
+                        ]
+                    },
+                    "titles": {
+                        "en": "Mens Digital Sports Watch LED Screen Large Face Military Watches for Men Waterproof Casual Luminous Stopwatch Alarm Simple Army Watch"
+                    },
+                    "model": "1068",
+                    "color": "Black",
+                    "brand": "CakCity",
+                    "imageUrl": "https://m.media-amazon.com/images/I/41laqrDlrlL.jpg",
+                    "itemDimensions": {
+                        "width": {
+                            "value": 3.19,
+                            "unit": "INCH"
+                        },
+                        "length": {
+                            "value": 3.31,
+                            "unit": "INCH"
+                        },
+                        "height": {
+                            "value": 3.19,
+                            "unit": "INCH"
+                        },
+                        "weight": {
+                            "value": 1.6,
+                            "unit": "OUNCE"
+                        }
+                    },
+                    "msrp": {
+                        "currencyCode": "USD",
+                        "amount": 14.99
+                    }
+                },
+                "offers": [
+                    {
+                        "marketBrand": "AMAZON",
+                        "countryCode": "US",
+                        "offers": {
+                            "NEW": {
+                                "marketPrice": {
+                                    "currencyCode": "USD",
+                                    "amount": 14.99
+                                },
+                                "marketPlaceFees": {
+                                    "currencyCode": "USD",
+                                    "amount": 2.4
+                                },
+                                "fbaSellingFees": {
+                                    "currencyCode": "USD",
+                                    "amount": 3.31
+                                },
+                                "taxAmount": {
+                                    "currencyCode": "USD",
+                                    "amount": 0.0
+                                },
+                                "listingUrl": "https://www.amazon.com/dp/B018HTGSN8?th=1&psc=1"
+                            }
+                        },
+                        "timestamp": 1611345504,
+                        "marketSpecificData": {
+                            "marketSpecificProductTitle": "Mens Digital Sports Watch LED Screen Large Face Military Watches for Men Waterproof Casual Luminous Stopwatch Alarm Simple Army Watch",
+                            "objectType": "AMAZON",
+                            "estimatedSalesRevenues": {
+                                "currencyCode": "USD",
+                                "amount": 14990.0
+                            },
+                            "estimatedUnitSold": 1000,
+                            "competition": {
+                                "level": "LOW",
+                                "numberOfOffers": 1,
+                                "lowestOfferFromReputableSeller": {
+                                    "price": {
+                                        "currencyCode": "USD",
+                                        "amount": 14.99
+                                    },
+                                    "sellerRating": {
+                                        "positiveFeedbackRating": "95-97%",
+                                        "numberOfSellerRatings": 7422
+                                    }
+                                },
+                                "lowestOffer": {
+                                    "price": {
+                                        "currencyCode": "USD",
+                                        "amount": 14.99
+                                    },
+                                    "sellerRating": {
+                                        "positiveFeedbackRating": "95-97%",
+                                        "numberOfSellerRatings": 7422
+                                    }
+                                },
+                                "buyBoxOffering": {
+                                    "price": {
+                                        "currencyCode": "USD",
+                                        "amount": 14.99
+                                    },
+                                    "sellerRating": {
+                                        "positiveFeedbackRating": "95-97%",
+                                        "numberOfSellerRatings": 7422
+                                    }
+                                },
+                                "amazonOfferState": "NOT_SOLD_BY_AMAZON"
+                            },
+                            "localAsin": "B018HTGSN8",
+                            "amazonCategories": [
+                                {
+                                    "name": "Sports",
+                                    "id": "sports_display_on_website",
+                                    "bestSellerRanking": 1114
+                                },
+                                {
+                                    "name": "Sport Watches",
+                                    "id": "15494452011",
+                                    "bestSellerRanking": 1,
+                                    "ancestorsPathIds": [
+                                        "3375251",
+                                        "3375301",
+                                        "706814011",
+                                        "11443874011",
+                                        "11443875011",
+                                        "11443906011"
+                                    ],
+                                    "ancestorsPathNames": [
+                                        "Sports & Outdoors",
+                                        "Categories",
+                                        "Outdoor Recreation",
+                                        "Outdoor Clothing",
+                                        "Men",
+                                        "Accessories"
+                                    ]
+                                },
+                                {
+                                    "name": "Sport Watches",
+                                    "id": "15494460011",
+                                    "bestSellerRanking": 1,
+                                    "ancestorsPathIds": [
+                                        "3375251",
+                                        "3375301",
+                                        "10971181011",
+                                        "11444071011",
+                                        "11444072011",
+                                        "11444098011"
+                                    ],
+                                    "ancestorsPathNames": [
+                                        "Sports & Outdoors",
+                                        "Categories",
+                                        "Sports & Fitness",
+                                        "Clothing",
+                                        "Men",
+                                        "Accessories"
+                                    ]
+                                },
+                                {
+                                    "name": "Wrist Watches",
+                                    "id": "6358540011",
+                                    "bestSellerRanking": 2,
+                                    "ancestorsPathIds": [
+                                        "7141123011",
+                                        "7141124011",
+                                        "7147441011",
+                                        "6358539011"
+                                    ],
+                                    "ancestorsPathNames": [
+                                        "Clothing, Shoes & Jewelry",
+                                        "Departments",
+                                        "Men",
+                                        "Watches"
+                                    ]
+                                }
+                            ],
+                            "soldViaFBA": true,
+                            "numberOfOffersSoldViaFBA": 1,
+                            "customerRatingInfo": {
+                                "ratingScore": 4.4,
+                                "numberOfRaters": 10816
+                            }
+                        },
+                        "imageSet": [
+                            "https://m.media-amazon.com/images/I/41laqrDlrlL.jpg"
+                        ]
+                    },
+                    {
+                        "marketBrand": "EBAY",
+                        "countryCode": "US",
+                        "offers": {
+                            "NEW": {
+                                "marketPrice": {
+                                    "currencyCode": "USD",
+                                    "amount": 20.89
+                                },
+                                "marketPlaceFees": {
+                                    "currencyCode": "USD",
+                                    "amount": 1.88
+                                },
+                                "taxAmount": {
+                                    "currencyCode": "USD",
+                                    "amount": 0.0
+                                },
+                                "listingUrl": "https://rover.ebay.com/rover/1/711-53200-19255-0/1?ff3=2&toolid=10044&campid=5337909775&customid=algopix-web&lgeo=1&vectorid=229466&item=402450761172",
+                                "insights": [
+                                    "CROSS_CHANNEL_COMPETITION",
+                                    "LISTING_IDENTIFIED_USING_KEYWORDS"
+                                ]
+                            }
+                        },
+                        "timestamp": 1611345504,
+                        "marketSpecificData": {
+                            "marketSpecificProductTitle": "Mens Digital Sports Watch LED Screen Large Face Military  Waterproof Casual",
+                            "objectType": "EBAY",
+                            "eBayCategories": [
+                                {
+                                    "name": "Wristwatches",
+                                    "id": "31387",
+                                    "ancestorsPathIds": [
+                                        "281",
+                                        "260324",
+                                        "260325"
+                                    ],
+                                    "ancestorsPathNames": [
+                                        "Jewelry & Watches",
+                                        "Watches, Parts & Accessories",
+                                        "Watches"
+                                    ]
+                                }
+                            ],
+                            "competition": {
+                                "level": "LOW"
+                            }
+                        },
+                        "imageSet": []
+                    },
+                    {
+                        "marketBrand": "WALMART",
+                        "countryCode": "US",
+                        "offers": {
+                            "NEW": {
+                                "marketPrice": {
+                                    "currencyCode": "USD",
+                                    "amount": 24.25
+                                },
+                                "marketPlaceFees": {
+                                    "currencyCode": "USD",
+                                    "amount": 3.64
+                                },
+                                "taxAmount": {
+                                    "currencyCode": "USD",
+                                    "amount": 0.0
+                                },
+                                "listingUrl": "http://c.affil.walmart.com/t/api01?l=https%3A%2F%2Fwww.walmart.com%2Fip%2FMen-s-Digital-Sports-Watch-LED-Screen-Large-Face-Military-Black-Size-No-Size%2F293851185%3Faffp1%3D%7Capk%7C%26affilsrc%3Dapi%26veh%3Daff%26wmlspartner%3Dreadonlyapi",
+                                "insights": [
+                                    "CROSS_CHANNEL_COMPETITION"
+                                ]
+                            }
+                        },
+                        "timestamp": 1611345504,
+                        "marketSpecificData": {
+                            "marketSpecificProductTitle": "Men's Digital Sports Watch LED Screen Large Face Military, Black, Size No Size",
+                            "objectType": "WALMART",
+                            "walmartItemId": "293851185",
+                            "walmartCategories": [
+                                {
+                                    "name": "All Watches",
+                                    "id": "1012759",
+                                    "ancestorsPathIds": [
+                                        "3891",
+                                        "3906"
+                                    ],
+                                    "ancestorsPathNames": [
+                                        "Jewelry",
+                                        "Watches"
+                                    ]
+                                }
+                            ],
+                            "estimatedSalesRevenues": {
+                                "currencyCode": "USD",
+                                "amount": 0.0
+                            },
+                            "estimatedUnitSold": 0,
+                            "competition": {
+                                "level": "LOW"
+                            }
+                        },
+                        "imageSet": [
+                            "https://i5.walmartimages.com/asr/170e7900-8e2a-400f-8467-cfe9f3404c02.d1a320cec8fbcddff39157a21853b925.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF",
+                            "https://i5.walmartimages.com/asr/d20f72e4-ac0c-43c2-8506-dce161f760fe.1a87b859a69c65f80b21884eba96ff46.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF",
+                            "https://i5.walmartimages.com/asr/7a28767f-85ff-481a-917f-64298bde9874.b421b1a9f906171f8c238253d3f5d0f6.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF",
+                            "https://i5.walmartimages.com/asr/94df7ccf-62bf-4ac4-b3f7-ddc2ffd445b6.20e2025ac0fc1797977b1fb082d8345f.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF",
+                            "https://i5.walmartimages.com/asr/50d4aee6-1f51-4de2-af34-4184e423ae48.a4c416814bd49c404ff46b2c8a412d07.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF"
+                        ]
+                    }
+                ],
+                "demand": {
+                    "US": 7
+                }
+            }
+        }
+    ],
+    "asyncApiStatus": {
+        "resultsReadyCount": 0,
+        "pendingRequestCount": 0
+    }
+}
