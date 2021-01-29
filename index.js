@@ -30,7 +30,7 @@ async function app() {
    /* fetch result */
     const FAKECategoryResultWorker = [{
       
-      requestId: "fa7ace37-ba8d-4c9f-aff0-6b73f141e11e",
+      requestId: "fa3c3714-e796-4c73-af9d-cd213e2d514f",
       id: 14284837011,
       numberOfResultAskFor: 33,
       ProgressStatus: 1
@@ -56,11 +56,14 @@ async function app() {
 
 
     /* 3) Save Workers List/Queue (should save to db or files) */
-    const dbCreatorr = await dbCreator(FAKECategoryResultWorker, "./worker-list.csv")
+    const dbCreatorr = await dbCreator(FAKECategoryResultWorker, './db/worker-list.csv')
     
+
     /* 4) *** API Category Research API GET: ​/category​/analysisAsync​/getReadyResults -> Get all the ready results.*/
     //whatisit ? "keep going" : "didnt write";
-    //const requestIdResultsArr = await categoryResearchGetRead();
+    const requestIdResultsArr = await categoryResearchGetRead();
+
+    console.log("requestIdResultsArr", requestIdResultsArr)
        
 
 
