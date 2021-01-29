@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-async function CategoryGetReadyResultsApi(query) {
+async function categoryGetReadyResultsApi(query) {
 
   const headersObj = {
     "X-APP-ID": process.env.X_APP_ID,
@@ -30,4 +30,4 @@ async function CategoryGetReadyResultsApi(query) {
   }
 }
 
-module.exports.CategoryGetReadyResultsApi = CategoryGetReadyResultsApi;
+module.exports.categoryGetReadyResultsApi = categoryGetReadyResultsApi;

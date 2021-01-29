@@ -12,7 +12,6 @@ const updateLine = (index, allApiCallResults, categoryDB) => {
   // Update DB resultAid
   
   let newItemsArr = [];
-  console.log
   let dbResultAidArr = JSON.parse(categoryDB[index].resultAid);
 
   //console.log("dbResultAidArr",dbResultAidArr)
@@ -102,7 +101,6 @@ async function categoryResearchGetRead() {
         let ProgressingDone = currentJobsStatus.ProgressStatus === "DONE";
         let fetchDone = currentJobsStatus.jobResultsReadyForFetch === true;
         //If list\queue is not empty, keep progress. alse, stop working here
-        console.log("One should be TRUE: ",(!ProgressingDone), (ProgressingDone && fetchDone));
         (!ProgressingDone && devCounter < 150) ||
         (ProgressingDone && fetchDone && devCounter < 150)
           ? getReadHelper(categoryDB)
@@ -134,7 +132,6 @@ async function categoryResearchGetRead() {
   }
   
   let dataPrited = await (getReadHelper(categoryDB))
-  console.log("Fsdfsdfsd",dataPrited)
   return
 }
 

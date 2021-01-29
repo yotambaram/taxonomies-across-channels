@@ -11,7 +11,12 @@ const { ProductAnalysisGetReadyResults } = require("./controllers/product-analys
 
 const {csvWriter} = require("./services/csv-writer");
 const {dbCreator} = require("./services/db-creator");
+const pathWorkersDb = "./db/worker-list.csv";
+  const pathCategotyDb = "./db/category-db.csv";
 
+const categoryGetResultquery =
+    "https://api.algopix.com/v3/category/analysisAsync/getReadyResults";
+   
 // Using for .env file to add API ID and KEY.
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -19,6 +24,7 @@ if (process.env.NODE_ENV !== "production") {
 
 async function app() {
   myWordersList = []
+  let dbCreatorr = false;
 
   try {
     /* 1) GET INPUT ID NUMBERS */
@@ -30,24 +36,24 @@ async function app() {
    /* fetch result */
     const FAKECategoryResultWorker = [{
       
-      requestId: "fa3c3714-e796-4c73-af9d-cd213e2d514f",
+      requestId: "f32ec813-955e-44f9-9b9c-7fcdc772d157",
       id: 14284837011,
       numberOfResultAskFor: 33,
       ProgressStatus: 1
     },{
       
-      requestId: '79d1cbe5-4dc3-407d-b205-2422a5c6bdeb',
+      requestId: "c94aa812-7b75-49cc-95d7-039992b9d4c8",
       id: 98674554234,
       numberOfResultAskFor: 22,
       ProgressStatus: 1
     },{
       
-      requestId: 'c3bb6add-1435-45bb-a5bd-08ab48ff2a4f',
+      requestId: "907bf10f-4ee7-4766-9749-81372d69e724",
       id: 7567567566,
       numberOfResultAskFor: 114,
       ProgressStatus: 1
     },{
-      requestId: '5fbf05a5-ddc6-493b-9ad7-77ac94594bfff7f',
+      requestId: "be56af30-3666-4379-b878-3e30c29f1814",
       id: 5234636546,
       numberOfResultAskFor: 44,
       ProgressStatus: 1
@@ -56,14 +62,19 @@ async function app() {
 
 
     /* 3) Save Workers List/Queue (should save to db or files) */
-    const dbCreatorr = await dbCreator(FAKECategoryResultWorker, './db/worker-list.csv')
-    
+    dbCreated = await dbCreator(FAKECategoryResultWorker, pathWorkersDb)
+    console.log("dbCreated is "+ dbCreated)
 
+    // timeout few min when processing (1000 * 60 * 5)
+    setTimeout(myFunc, 1000, 'funky'); 
     /* 4) *** API Category Research API GET: ​/category​/analysisAsync​/getReadyResults -> Get all the ready results.*/
     //whatisit ? "keep going" : "didnt write";
-    const requestIdResultsArr = await categoryResearchGetRead();
+    async function myFunc(arg){
+      const getReadyResultsArr = await categoryResearchGetRead(categoryGetResultquery);
+         console.log("requestIdResultsArr", getReadyResultsArr)
+    }
 
-    console.log("requestIdResultsArr", requestIdResultsArr)
+    
        
 
 

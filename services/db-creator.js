@@ -25,10 +25,10 @@ const { csvWriter } = require("./csv-writer");
 // };
 
 async function dbCreator(productsArr, pathDb) {
-  console.log("DATA TEST:", productsArr);
+  //console.log("DATA TEST:", productsArr);
   let headers = Object.keys(productsArr[0]);
   productsArr.forEach((dataObj) => {
-    console.log("Creating line");
+    //console.log("Creating line");
     csvWriter(dataObj, pathDb, headers);
   });
 

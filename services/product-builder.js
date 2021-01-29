@@ -2,10 +2,10 @@
 const Product = require("../models/Product");
 const {csvReader} = require("./csv-reader")
 
-async function productBuilder(dataResults, path) {
+async function productBuilder(dataResults, pathWorkersDb) {
     // Get worker DB (with sql it can be get worker where workersDB[i].requestId === currentRequestId)
-    let workersDB = await csvReader(path)
-
+    let workersDB = await csvReader(pathWorkersDb)
+    //console.log("product-builder workersDB",workersDB)
     let currentRequestId = dataResults.result[0].requestId;
     let currentBrowseNodeId;
     let currwntNumberOfResultAskedFor;

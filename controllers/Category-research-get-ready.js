@@ -1,122 +1,58 @@
 const {
-  CategoryGetReadyResultsApi,
+  categoryGetReadyResultsApi,
 } = require("../api/category-research-ready-api-request");
 
 const { productBuilder } = require("../services/product-builder");
 const { dbCreator } = require("../services/db-creator");
-const { forEach } = require("lodash");
+// const { forEach } = require("lodash");
 const { statusChecker } = require("../services/status-checker");
 
+let whileLoopDevCounter = 1;
 
+const pathWorkersDb = "./db/worker-list.csv";
+  const pathCategotyDb = "./db/category-db.csv";
 
-
-async function categoryResearchGetRead() {
-  let ready = false;
-
-  const pathWorkersDb = "./db/worker-list.csv";
-  const pathCategotyDb = "./db/category-db copy.csv";
-  const query =
-    "https://api.algopix.com/v3/category/analysisAsync/getReadyResults";
-
-  // let categoryDB = await csvReader(pathDb);
+async function categoryResearchGetRead(query) {
+  // let ready = false;
 
   try {
     /* Call API*/
-    const allApiCallResults = await CategoryGetReadyResultsApi(query);
-    apiDataResut = allApiCallResults[0].data;
-    //console.log(apiDataResut)
+    let allApiCallResults = await categoryGetReadyResultsApi(query);
+    apiDataResult = allApiCallResults[0].data;
+    // console.log("EXAMPLE",apiDataResult.result[0])
 
-    //cases when to stop
-    let jobsStatus = statusChecker(apiDataResut.asyncApiStatus.jobsStatus); //Object.keys(apiDataResut.asyncApiStatus.jobsStatus)
-    let jobsProcessing = apiDataResut.asyncApiStatus.jobsProcessing;
-    let howManyResults = apiDataResut.result.length;
-    let whileLoopDevCounter = 1;
-    console.log(
-      "jobsStatus:",
-      jobsStatus,
-      "jobsProcessing:",
-      jobsProcessing,
-      "howManyResults: ",
-      howManyResults
-    );
+    // Cases when to stop
+    let jobsStatus = statusChecker(apiDataResult.asyncApiStatus.jobsStatus); //Object.keys(apiDataResult.asyncApiStatus.jobsStatus)
+    let jobsProcessing = apiDataResult.asyncApiStatus.jobsProcessing;
+    let howManyResults = apiDataResult.result.length;
 
     // While one of the conditions is true, save the result and call the api again.
-    while (
-      (jobsProcessing && whileLoopDevCounter <= 2) ||
-      (howManyResults > 0 && whileLoopDevCounter <= 2) ||
-      whileLoopDevCounter <= 2
-    ) {
+    while (jobsProcessing && whileLoopDevCounter < 4|| howManyResults > 0 && whileLoopDevCounter < 4|| jobsStatus && whileLoopDevCounter <4) {
       // Build new Items
-      const productsArr = await productBuilder(apiDataResut, pathWorkersDb);
-
+      console.log("While" + whileLoopDevCounter)
+      const productsArr = await productBuilder(apiDataResult, pathWorkersDb, pathCategotyDb);
+    
       //save the item to DB
-      let addToDb = dbCreator(productsArr, pathCategotyDb);
+      dbCreator(productsArr, pathCategotyDb);
 
-      // then call the readyresult api again
-      if (jobsStatus === 0 && jobsProcessing === true) {
-        // time out and then call
-      }
-      if (jobsStatus === 0 && jobsProcessing === true) {
-        // time out and then call
-      }
-      if (howManyResults < 1) {
-        // time out and then call
+
+      // Call API again if there are more resuts to work on
+      if (howManyResults > 0) {
+        console.log("you have more results to work on")
+        allApiCallResults = await categoryGetReadyResultsApi(query);
+        // allApiCallResults = await categoryGetReadyResultsApi(query);
+      // Or if jobStaus is true or job jobs processing
+      } else if (jobsStatus || jobsProcessing === true) {
+        console.log("the are no result but its processing new ones")
+        // timeout and then call
+        allApiCallResults = await categoryGetReadyResultsApi(query);
+        
       }
 
-      //console.log(whileLoopDevCounter, addToDb)
-      //firstRequestId = await CategoryGetReadyResultsApi(query);
-      whileLoopDevCounter++;
+       whileLoopDevCounter++;
     }
+    console.log("NO MORE RESULTS")
 
-    //         //return categoryDB;
-    //       } else {
-    //         // Check if current request id exists in DB
-    //         //console.log("TEST",allApiCallResults[0].data.result[0].requestId)
-    //         let currentRequestId = allApiCallResults[0].data.result[0].requestId;
-    //         let index = -1;
-    //         for (let i = 0; i < categoryDB.length; i++) {
-    //           if (currentRequestId === categoryDB[i].requestId) {
-    //             index = i;
-    //             break;
-    //           }
-    //         }
-    //         // If exsits, Update, else Create new line
-    //         index > -1
-    //           ? (categoryDB = await updateLine(
-    //               index,
-    //               allApiCallResults,
-    //               categoryDB
-    //             ))
-    //           : (categoryDB = await createLine(
-    //               allApiCallResults,
-    //               categoryDB,
-    //               pathWorkersDb
-    //             ));
-    //       }
-
-    //       let currentJobsStatus = allApiCallResults[0].data.asyncApiStatus;
-    //       //   //   //If there are no jobs
-    //       //     !currentJobsStatus
-    //       //       ? /* remove requestId from queue */ (newDataExample.localFetched = true)
-    //       //      : "";
-    //       let ProgressingDone = currentJobsStatus.ProgressStatus === "DONE";
-    //       let fetchDone = currentJobsStatus.jobResultsReadyForFetch === true;
-    //       //If list\queue is not empty, keep progress. alse, stop working here
-    //       console.log("One should be TRUE: ",(!ProgressingDone), (ProgressingDone && fetchDone));
-    //       (!ProgressingDone && devCounter < 150) ||
-    //       (ProgressingDone && fetchDone && devCounter < 150)
-    //         ? getReadHelper(categoryDB)
-    //         : ready = await csvWriter(
-    //             categoryDB,
-    //             pathDb
-    //           ); /* +remove it from worker-list */
-
-    //     } else {
-
-    //       ready = await csvWriter
-    //         return ready
-
-    //     }
   } catch (err) {
     console.log("Error runProcess" + err);
   }
@@ -125,7 +61,7 @@ async function categoryResearchGetRead() {
 
   // let dataPrited = await (getReadHelper(categoryDB))
   // console.log("Fsdfsdfsd",dataPrited)
-  return;
+  return "saved";
 }
 
 module.exports.categoryResearchGetRead = categoryResearchGetRead;

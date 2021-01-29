@@ -16,7 +16,7 @@ const csvWriter = (data, filePath, fields) => {
         fields = fields + newLine;
         fs.writeFile(filePath, fields, function (err) {
           if (err) throw err;
-          return writeTheProduct = csvWriter(data, filePath, fields);
+          csvWriter(data, filePath, fields);
         });
       }
     });
