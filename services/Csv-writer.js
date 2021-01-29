@@ -1,16 +1,42 @@
-const fs = require("fs");
-const json2csv = require("json2csv");
-const { Parser } = json2csv;
+var fs = require('fs');
+var json2csv = require('json2csv').parse;
+var newLine = '\r\n';
 
 
-const csvWriter = (dataRes, path) => {
+/*
+json2csv
+*/
+
+const csvWriter = (data, filePath, fields) => {
   try {
-    const json2csvParser = new Parser();
-    const csv = json2csvParser.parse(dataRes);
-    fs.writeFile(path, csv, function (err) {
+
+
+
+fs.stat('./db/worker-list.csv', function (err, stat) {
+  if (err == null) {
+    console.log('File exists');
+
+    //write the actual data and end with newline
+    var csv = json2csv(data, { header: false }) + newLine;
+    var csv2 = json2csv(data, { header: true }) + newLine;
+
+    fs.appendFile('./db/worker-list.csv', csv, function (err) {
       if (err) throw err;
-      console.log(`File ${path} Saved!`);
+      console.log('The "data to append" was appended to file!');
     });
+  } else {
+    //write the headers and newline
+    console.log('New file, just writing headers');
+    fields = fields + newLine;
+
+    fs.writeFile('./db/worker-list.csv', fields, function (err) {
+      
+      if (err) throw err;
+      console.log('file saved');
+    }).then( ()=> {});  
+   
+  }
+});
   } catch (err) {
     console.log("Erorr identificationApiClient");
     console.log(err);

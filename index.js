@@ -6,11 +6,11 @@
 
 const { requestForCategoty } = require("./api/category-research-request-api");
 const { categoryResearchGetRead } = require("./controllers/category-research-get-ready");
-
 const { requestForProductAnalysis } = require("./api/product-analysis-request-api");
 const { ProductAnalysisGetReadyResults } = require("./controllers/product-analysis-get-ready");
 
-const {csvWriter} = require("./services/csv-writer")
+const {csvWriter} = require("./services/csv-writer");
+const {dbCreator} = require("./services/db-creator");
 
 // Using for .env file to add API ID and KEY.
 if (process.env.NODE_ENV !== "production") {
@@ -25,35 +25,42 @@ async function app() {
     //const input = [{id: 2975359011, numberOfResults: 92},{id: 2975359011, numberOfResults: 91}]
 
     /* 2) API Category Research GET: /searchAsync -> Returns market research data regarding an item. */
-    // const requestIdsArr = await requestForCategoty(input);
+    //const requestIdsArr = await requestForCategoty(input);
 
    /* fetch result */
     const FAKECategoryResultWorker = [{
+      
+      requestId: "fa7ace37-ba8d-4c9f-aff0-6b73f141e11e",
       id: 14284837011,
-      requestId: "31f49951-3aee-4790-a2b1-f510e6d8d4a9",
-      numberOfResultAskFor: 33
+      numberOfResultAskFor: 33,
+      ProgressStatus: 1
     },{
-      id: 98674554234,
+      
       requestId: '79d1cbe5-4dc3-407d-b205-2422a5c6bdeb',
-      numberOfResultAskFor: 22
+      id: 98674554234,
+      numberOfResultAskFor: 22,
+      ProgressStatus: 1
     },{
-      id: 7567567566,
+      
       requestId: 'c3bb6add-1435-45bb-a5bd-08ab48ff2a4f',
-      numberOfResultAskFor: 11
+      id: 7567567566,
+      numberOfResultAskFor: 114,
+      ProgressStatus: 1
     },{
+      requestId: '5fbf05a5-ddc6-493b-9ad7-77ac94594bfff7f',
       id: 5234636546,
-      requestId: '5fbf05a5-ddc6-493b-9ad7-77ac94594b7f',
-      numberOfResultAskFor: 44
+      numberOfResultAskFor: 44,
+      ProgressStatus: 1
     }]; 
     
+
+
     /* 3) Save Workers List/Queue (should save to db or files) */
-    const whatisit = await csvWriter(FAKECategoryResultWorker, "./db/worker-list.csv") // return true when finished
-
-   
-
+    const dbCreatorr = await dbCreator(FAKECategoryResultWorker, "./worker-list.csv")
+    
     /* 4) *** API Category Research API GET: ​/category​/analysisAsync​/getReadyResults -> Get all the ready results.*/
     //whatisit ? "keep going" : "didnt write";
-    const requestIdResultsArr = await categoryResearchGetRead();
+    //const requestIdResultsArr = await categoryResearchGetRead();
        
 
 
