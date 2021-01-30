@@ -14,4 +14,8 @@ class Worker {
 
   module.exports = Worker;
 
- 
+   /*
+     constructor(requestId, categoryId ,numberOfResultAskFor) {
+      this.requestId = {"categoryId": categoryId, "numberOfResultAskFor": numberOfResultAskFor, "ProgressStatus": 1};
+    }
+    */

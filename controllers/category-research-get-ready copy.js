@@ -44,8 +44,7 @@ async function createLine(allApiCallResults, categoryDB, pathWorkers) {
 async function categoryResearchGetRead() {
   let ready = false;
   let devCounter = 0;
-  const pathDb = "./db/Category-db.csv";
-  const pathWorkers = "./db/worker-list.csv";
+
   const query =
     "https://api.algopix.com/v3/category/analysisAsync/getReadyResults";
 

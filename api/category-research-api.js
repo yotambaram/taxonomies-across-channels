@@ -1,6 +1,7 @@
 const axios = require("axios");
+const Worker = require("../models/Worker")
 
-async function requestForCategoty(InputDataArr) {
+async function categoryResearchApi(InputDataArr) {
   const headersObj = {
     "X-APP-ID": process.env.X_APP_ID,
     "X-API-KEY": process.env.X_API_KEY,
@@ -32,11 +33,8 @@ async function requestForCategoty(InputDataArr) {
       axios.spread((...args) => {
         for (let i = 0; i < args.length; i++) {
           // TODO: if succss/200
-          resultArr.push({
-            "id": InputDataArr[i].id,
-            "requestId": args[i].data.requestId,
-            "numberOfResultAskFor" : InputDataArr[i].numberOfResults,
-          });
+          let worker = new Worker(args[i].data.requestId, InputDataArr[i].id,InputDataArr[i].numberOfResults)
+          resultArr.push(JSON.parse(JSON.stringify(worker)));
         }
         return resultArr;
       })
@@ -47,4 +45,4 @@ async function requestForCategoty(InputDataArr) {
   }
 }
 
-module.exports.requestForCategoty = requestForCategoty;
+module.exports.categoryResearchApi = categoryResearchApi;
