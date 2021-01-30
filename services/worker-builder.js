@@ -7,25 +7,24 @@ const { csvWriter } = require("./csv-writer");
 
 async function workerBuilder(dataResultsArr, pathWorkersDb) {
   try {
-
     // Get worker DB (with sql it can be get worker where workersDB[i].requestId === currentRequestId)
     let workersDB = await csvReader(pathWorkersDb);
     if (workersDB) {
       console.log("workersDB", true);
       // if exist, check if req exsits
+      console.log(workersDB)
+      console.log(dataResultsArr)
       for (let i = 0; i < workersDB.length; i++) {
-        console.log("FIRST",workersDB[i].requestId);
-        for (let j = 0; j < dataResultsArr.length; j++) {
-          let newRequestsFilteredList = [];
-          if(workersDB[i].requestId !== dataResultsArr[j].requestId){
-            newRequestsFilteredList.push(dataResultsArr[j]);
-          }
+        console.log(dataResultsArr["requestId"], "=?", workersDB[i].requestId)
+        if (dataResultsArr.includes(workersDB[i].requestId)) {
+          // not to itirair both &^^%&%^&%^&%^&%^&%^&%^&%
+          // ^%&%^&%^&%^&%^
+          console.log("not include");
           let headers = Object.keys(newRequestsFilteredList[0]);
           csvWriter(newRequestsFilteredList, pathWorkersDb, headers);
+        } else {
         }
       }
-      //if yes do nothing here
-      // else write it
     } else {
       // write it
       let headers = Object.keys(dataResultsArr[0]);
