@@ -1,38 +1,24 @@
-const { categoryResearchApi } = require("../api/category-research-api");
+const { categoryResearchApiProcessor } = require("../api/category-research-api-processor");
 const { csvWriter } = require("../services/csv-writer");
-const { workerBuilder } = require("../services/worker-builder");
+const { workerDbBuilder } = require("../services/worker-db-builder");
 let whileLoopDevCounter = 1;
 
 
-async function categoryResearchController(inputArr, pathWorkersDb) {
-  console.log("category controller",pathWorkersDb)
-  // let ready = false;
-  try {
-    /* Call API*/
-    //let requestIdsArr = await categoryResearchApi(inputArr, pathWorkersDb);
+async function categoryResearchController(categortRequesrIdMap) {
+    try {
 
-    let FAKERequestIdsArr = [
-      {
-        requestId: "648180e7-d60a-4c1d-8d65-196c2fdfdda5",
-        categoryId: 2975359011,
-        numberOfResultAskFor: 2,
-        ProgressStatus: 1,
-      },
-      {
-        requestId: "bc79075b-cee8-4555-82e1-ad89ffd88d32d4",
-        categoryId: 2975359011,
-        numberOfResultAskFor: 5,
-        ProgressStatus: 1,
-      },
-    ];
-  
-    //will check if exists and if not, will write to db
-    let workers = await workerBuilder(FAKERequestIdsArr/*requestIdsArr*/,pathWorkersDb); 
+    /* 1) Call API*/
+    let workersObjRes = await categoryResearchApiProcessor(categortRequesrIdMap);
+
+    /* 2)  Check if exists and if not, write to db */
+    let workers = await workerDbBuilder(workersObjRes);
+    //let workers = + writeToCategoryWorkersDB(category-request-id,categoryId)
+    return workersObjRes;
   } catch (err) {
     console.log("Error runProcess - category research get ready");
     console.log("Error runProcess" + err);
   }
-  return "saved";
+  return workersObjRes;
 }
 
 module.exports.categoryResearchController = categoryResearchController;

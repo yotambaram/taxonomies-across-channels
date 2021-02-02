@@ -2,10 +2,12 @@
 const Product = require("../models/Product");
 const {csvReader} = require("./csv-reader")
 
-async function productsBuilder(dataResults, pathWorkersDb) {
+async function productsBuilder(dataResults) {
+  
     // Get worker DB (with sql it can be get worker where workersDB[i].requestId === currentRequestId)
-    let workersDB = await csvReader(pathWorkersDb)
-    //console.log("product-builder workersDB",workersDB)
+    let workersDB = await csvReader("./db/category-workers-db.csv")
+    //console.log("string",workersDB["5718ab34-fe60-430c-b822-ff57bfea54fb"])
+    console.log("product-builder workersDB",workersDB.has("5718ab34-fe60-430c-b822-ff57bfea54fb"))
     let currentRequestId = dataResults.result[0].requestId;
     let currentBrowseNodeId;
     let currwntNumberOfResultAskedFor;
@@ -17,7 +19,7 @@ async function productsBuilder(dataResults, pathWorkersDb) {
     }    
     ProductsArr = [];
     for (let i = 0; i < dataResults.result.length; i++) {
-      resultAid = dataResults.result[i].result.aid
+      let resultAid = dataResults.result[i].result.aid
       let newProduct = new Product(currentRequestId, currentBrowseNodeId, currwntNumberOfResultAskedFor, resultAid)   
       ProductsArr.push(newProduct)
     }

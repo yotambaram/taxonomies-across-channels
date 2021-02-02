@@ -5,19 +5,9 @@
 // Get result
 
 const { categoryResearchController } = require("./controllers/category-research-controller");
+const { categoryResearchGetReadyController } = require("./controllers/category-research-get-ready-controller");
+const { ProductAnalysisGetReadyResults } = require("./controllers/product-analysis-get-ready");
 
-const { categoryResearchRequestApi } = require("./api/category-research-api");
-const {
-  categoryResearchGetRead,
-} = require("./controllers/category-research-get-ready-controller");
-
-const {
-  requestForProductAnalysis,
-} = require("./api/product-analysis-request-api");
-const {
-  ProductAnalysisGetReadyResults,
-} = require("./controllers/product-analysis-get-ready");
-const { dbCreator } = require("./services/db-creator");
 
 
 // Using for .env file to add API ID and KEY.
@@ -36,22 +26,27 @@ async function app() {
   try {
     /* 1) GET INPUT ID NUMBERS */
     const input = [
-      { id: 2975359011, numberOfResults: 2 },
-      { id: 2975359011, numberOfResults: 5 },
+      { categoryId: 6358540011, numberOfResults: 45 },
+      //{ categoryId: 6358540011, numberOfResults: 6 },
     ];
    
-    /* 2) API Category Research GET: /searchAsync -> Returns market research data regarding an item. */
-    const reaaaaquestI = await categoryResearchController(input, workerDbPath);
 
-    /* 3) Save Workers List/Queue (should save to db or files) */
+    
  
-    //    const whatisit = await csvWriter(FAKECategoryResultWorker, "./db/worker-list.csv") // return true when finished
+    /* 2) API Category Research /searchAsync -> Returns market research data regarding an item. */
+    const categortRequestIdObj = await categoryResearchController(input);
+ console.log("categortRequestIdObj",categortRequestIdObj)
+    let testcategortRequesrIdObj = {
+      '5718ab34-fe60-430c-b822-ff57bfea54fb': { "categoryId": 6358540011 },
+      'a029f7af-b7f6-4de5-9c58-eb1b159bd993': { "categoryId": 6358540011 }
+    }
+    
 
-    /* 4) *** API Category Research API GET: ​/category​/analysisAsync​/getReadyResults -> Get all the ready results.*/
+    /* 3) API Category Get Ready ​/category​/analysisAsync​/getReadyResults -> Get all the ready results.*/
     //whatisit ? "keep going" : "didnt write";
-    //const requestIdResultsArr = await categoryResearchGetRead();
+    //const requestIdResultsArr = await categoryResearchGetReadyController(testcategortRequesrIdObj);
 
-    /* 3) update DB */
+    /* 4) update DB */
     //console.log("updateDB", requestIdResultsArr)
 
     /* 5) *** API Product Analysis API GET: /searchAsync -> Returns market research data regarding an item.*/

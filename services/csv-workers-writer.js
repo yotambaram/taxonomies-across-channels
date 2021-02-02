@@ -21,7 +21,7 @@ const csvWriter = (data, filePath, fields) => {
       }
     });
   } catch (err) {
-    console.log("Erorr csv-writer");
+    console.log("Erorr identificationApiClient");
     console.log(err);
   }
   return true;
