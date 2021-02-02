@@ -26,8 +26,8 @@ async function app() {
   try {
     /* 1) GET INPUT ID NUMBERS */
     const input = [
-      { categoryId: 6358540011, numberOfResults: 45 },
-      //{ categoryId: 6358540011, numberOfResults: 6 },
+      { categoryId: 6358540011, numberOfResults: 39 },
+      //{ categoryId: 6358540011, numberOfResults: 17 },
     ];
    
 
@@ -35,11 +35,11 @@ async function app() {
  
     /* 2) API Category Research /searchAsync -> Returns market research data regarding an item. */
     const categortRequestIdObj = await categoryResearchController(input);
- console.log("categortRequestIdObj",categortRequestIdObj)
-    let testcategortRequesrIdObj = {
-      '5718ab34-fe60-430c-b822-ff57bfea54fb': { "categoryId": 6358540011 },
-      'a029f7af-b7f6-4de5-9c58-eb1b159bd993': { "categoryId": 6358540011 }
-    }
+ //console.log("categortRequestIdObj",categortRequestIdObj)
+    // let testcategortRequesrIdObj = [
+    //   {'5718ab34-fe60-430c-b822-ff57bfea54fb': { "categoryId": 6358540011 },}
+    //   'a029f7af-b7f6-4de5-9c58-eb1b159bd993': { "categoryId": 6358540011 }
+    // ]
     
 
     /* 3) API Category Get Ready ​/category​/analysisAsync​/getReadyResults -> Get all the ready results.*/

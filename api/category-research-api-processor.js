@@ -11,6 +11,7 @@ async function categoryResearchApiProcessor(categoryIdArr) {
 
   try {
     const apiCallPromisesArr = [];
+    // Build queries array with request
     for (let i = 0; i < categoryIdArr.length; i++) {
       let id = categoryIdArr[i].categoryId;
       let currentNumberOfResults = categoryIdArr[i].numberOfResults;
@@ -21,16 +22,14 @@ async function categoryResearchApiProcessor(categoryIdArr) {
     }
 
     const resultArr = [];
-    
+    // Execute api get arr (all queries) and build array of api results
     return axios.all(apiCallPromisesArr).then(
       axios.spread((...args) => {
-        let workersObj = new Object();
         for (let i = 0; i < args.length; i++) {
           // TODO: if succss/200
-          workersObj[args[i].data.requestId] = {"categoryId":categoryIdArr[i].categoryId, "status": 1}; 
+          resultArr[i] = {"categoryRequestID":args[i].data.requestId, "categoryId":categoryIdArr[i].categoryId}; 
         }
-        
-        return workersObj;
+        return resultArr;
       })
     );
   } catch (err) {
