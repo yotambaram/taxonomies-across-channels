@@ -27,7 +27,7 @@ async function categoryResearchApiProcessor(categoryIdArr) {
       axios.spread((...args) => {
         for (let i = 0; i < args.length; i++) {
           // TODO: if succss/200
-          resultArr[i] = {"categoryRequestID":args[i].data.requestId, "categoryId":categoryIdArr[i].categoryId}; 
+          resultArr[i] = {"categoryRequestID":args[i].data.requestId, "categoryId":categoryIdArr[i].categoryId, "processStatus":true}; 
         }
         return resultArr;
       })

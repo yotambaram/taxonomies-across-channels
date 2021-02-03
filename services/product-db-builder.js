@@ -5,8 +5,14 @@ const { csvWriter } = require("./csv-workers-writer");
 
 const pathProductsDb = "./db/category-products-db.csv";
 
-async function productsBuilder(currentCategoryResults) {
+async function productsBuilder(currentCategoryResults, categortRequestIdsArr) {
 
+  let requestsIdsMapping = new Object()
+  categortRequestIdsArr.map(request => {
+    requestsIdsMapping[request.categoryRequestID] = request.categoryId
+
+  })
+  console.log(requestsIdsMapping)
   let categoryProductsDB = await csvReader(pathProductsDb)
   try {
     newResultsArr = [];

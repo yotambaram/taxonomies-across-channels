@@ -9,8 +9,8 @@ let whileLoopDevCounter = 1;
 
 
 
-async function categoryResearchGetReadyController() {
-  
+async function categoryResearchGetReadyController(categortRequestIdsArr) {
+
   let query = "https://api.algopix.com/v3/category/analysisAsync/getReadyResults"
   try {
 
@@ -30,17 +30,17 @@ async function categoryResearchGetReadyController() {
       // If there are results, save them
       if(currentResults.length > 0) {
         // Build new pruducts and save pruducts to DB
-        const productsArr = await productsBuilder(currentResults);
+        const productsArr = await productsBuilder(currentResults, categortRequestIdsArr);
         // // Call the api again to get new result
-        processTimeout2(categoryGetReadyResultsApi, query, 1000 * 1)
+        const test = await processTimeout2(categoryGetReadyResultsApi, query, 1000 * 2)
 
       } 
       // Else if jobStaus is still have data or still processing new jobs
-      if (jobsStatus === true || jobsProcessing === true) {
+      else if (jobsStatus === true || jobsProcessing === true) {
         // Wait X time and call api again.
-        processTimeout2(categoryGetReadyResultsApi, query, 1000 * 15)
+        const test2 = await processTimeout2(categoryGetReadyResultsApi, query, 1000 * 20)
       }
-      jobsStatus = statusChecker(categoryApiData.asyncApiStatus.jobsStatus)
+     // jobsStatus = statusChecker(categoryApiData.asyncApiStatus.jobsStatus)
        whileLoopDevCounter++;
     }
 
