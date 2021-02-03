@@ -1,10 +1,19 @@
-const statusChecker = (jobsStatusObj) => {
+const {csvWriter} = require("./csv-workers-writer")
+const {csvReader} = require("./csv-reader")
+
+
+async function statusChecker(jobsStatusObj) {
     let requestIdsArr = Object.keys(jobsStatusObj)
-    let haveWorkToDo = false;
+    let haveWorkToDo = true;
     requestIdsArr.forEach( job => {
-      haveWorkToDo = jobsStatusObj[job].ProgressStatus !== "DONE" || jobsStatusObj[job].jobResultsReadyForFetch !== false ? true : false;
-      if (haveWorkToDo) {
-        return haveWorkToDo;
+      
+      jobRequestProcces = jobsStatusObj[job].ProgressStatus === "DONE" && jobsStatusObj[job].jobResultsReadyForFetch === false ? false : true;
+      console.log(job, jobRequestProcces)
+      if (jobRequestProcces === false) {
+       // let db = await csvReader("../db/category-workers-db.csv")
+       
+        console.log(`Request: ${job} finished process. need to move next and delete from here`)
+        //update dbWorker status
       }
     });
     return haveWorkToDo

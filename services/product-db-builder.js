@@ -1,13 +1,12 @@
 const { fileBuilder } = require("./file-builder");
 const Product = require("../models/Product");
 const {csvReader} = require("./csv-reader")
+const { csvWriter } = require("./csv-workers-writer");
 
 const pathProductsDb = "./db/category-products-db.csv";
 
 async function productsBuilder(currentCategoryResults) {
-  // console.log(currentCategoryResults[0].requestId)
-  // console.log(currentCategoryResults[0].result.aid)
-  
+
   let categoryProductsDB = await csvReader(pathProductsDb)
   try {
     newResultsArr = [];
@@ -17,17 +16,12 @@ async function productsBuilder(currentCategoryResults) {
       resultObj["aid"] = CategortResult.result.aid;
       newResultsArr.push(resultObj);
     });
-    //console.log(newResultsArr)
     let headers = Object.keys(newResultsArr[0]);
-  // write resulte to DB
-  console.log("HGGHGHGGHF")
     if (categoryProductsDB) {
-      console.log("YESSSSSSSS")
       let write = await csvWriter(newResultsArr, pathProductsDb, headers);
       return write;
     }
     else {
-      console.log("NOOOOOOOO")
       await fileBuilder(pathProductsDb, headers);
       let write = await csvWriter(newWorkersArr, pathProductsDb, headers);
       return write;
@@ -36,7 +30,11 @@ async function productsBuilder(currentCategoryResults) {
     console.log("ERROR workerDbBuilder");
   }
   
+  return;
+}
 
+
+module.exports.productsBuilder = productsBuilder
 
 // update worker status
 
@@ -74,8 +72,4 @@ async function productsBuilder(currentCategoryResults) {
     //   ProductsArr.push(newProduct)
     // }
     
-    return ProductsArr
-  }
-
-
-  module.exports.productsBuilder = productsBuilder
+ 

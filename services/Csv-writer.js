@@ -3,7 +3,7 @@ const { Parser } = require('json2csv');
 const newLine = "\r\n";
 
 const csvWriter = (data, filePath, fields) => {
-  console.log(data)
+ // console.log(data)
   try {
     fs.stat(filePath, function (err, stat) {
       if (err == null) {

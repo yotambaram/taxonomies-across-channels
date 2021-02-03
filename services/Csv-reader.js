@@ -1,9 +1,4 @@
-// const csvFilePath='<path to csv file>'
-// const csv = require('csvtojson');
-// const fs = require("fs");
-// const headers = ["requestId", "browseNodeId", "numberOfResultAskedFor", "aid"];
 
-const csvFilePath = "<path to csv file>";
 const csv = require("csvtojson");
 const fs = require("fs");
 
@@ -23,6 +18,9 @@ async function csvReader(path) {
 }
 
 module.exports.csvReader = csvReader;
+
+
+
 // async function csvReader(path) {
 //   console.log("csvReader" + path)
 //   try {
