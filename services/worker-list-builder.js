@@ -4,7 +4,6 @@ const Fields = require("../models/OutputFields");
 const { Parser } = json2csv;
 
 const workersList = (dataRes) => {
-  //console.log(dataRes)
   for (let i = 0; i < dataRes.length; i++) {
     if (dataRes[i].data.statusCode > 299) {
       throw "Error csvWriter (API REQUEST)" + err;

@@ -3,17 +3,16 @@ const {
 } = require("../api/category-research-ready-api-request");
 const { csvReader } = require("../services/csv-reader");
 const { csvWriter } = require("../services/csv-writer");
-const { NewItemBuilder } = require("../services/db-Item-builder");
+const { NewItemBuilder } = require("../services/db-product-builder");
 
 //if exist: update DB by add aid to array
 
 const updateLine = (index, allApiCallResults, categoryDB) => {
   let apiResult = allApiCallResults[0].data.result;
-  // Update DB resultAId
+  // Update DB resultAid
   
   let newItemsArr = [];
-  console.log
-  let dbResultAidArr = JSON.parse(categoryDB[index].resultAId);
+  let dbResultAidArr = JSON.parse(categoryDB[index].resultAid);
 
   //console.log("dbResultAidArr",dbResultAidArr)
   // Put new aid results in array
@@ -25,7 +24,7 @@ const updateLine = (index, allApiCallResults, categoryDB) => {
   
   let concatArr = dbResultAidArr.concat(newItemsArr);
   //console.log("concatArr", concatArr);
-  categoryDB[index].resultAId = JSON.stringify(concatArr);
+  categoryDB[index].resultAid = JSON.stringify(concatArr);
  
   //console.log("updateLine",categoryDB)
   return categoryDB;
@@ -45,8 +44,7 @@ async function createLine(allApiCallResults, categoryDB, pathWorkers) {
 async function categoryResearchGetRead() {
   let ready = false;
   let devCounter = 0;
-  const pathDb = "./db/Category-db.csv";
-  const pathWorkers = "./db/worker-list.csv";
+
   const query =
     "https://api.algopix.com/v3/category/analysisAsync/getReadyResults";
 
@@ -102,7 +100,6 @@ async function categoryResearchGetRead() {
         let ProgressingDone = currentJobsStatus.ProgressStatus === "DONE";
         let fetchDone = currentJobsStatus.jobResultsReadyForFetch === true;
         //If list\queue is not empty, keep progress. alse, stop working here
-        console.log("One should be TRUE: ",(!ProgressingDone), (ProgressingDone && fetchDone));
         (!ProgressingDone && devCounter < 150) ||
         (ProgressingDone && fetchDone && devCounter < 150)
           ? getReadHelper(categoryDB)
@@ -134,7 +131,6 @@ async function categoryResearchGetRead() {
   }
   
   let dataPrited = await (getReadHelper(categoryDB))
-  console.log("Fsdfsdfsd",dataPrited)
   return
 }
 

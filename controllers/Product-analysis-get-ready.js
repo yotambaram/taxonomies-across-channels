@@ -34,7 +34,7 @@ async function ProductAnalysisGetReadyResults(/*exampleResponsetArr*/) {
     } catch (err) {
       console.log("Error runProcess" + err);
     }
-    console.log(resultIDs)
+    //console.log(resultIDs)
     return resultIDs
   }
 
