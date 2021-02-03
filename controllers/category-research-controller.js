@@ -16,20 +16,18 @@ async function categoryResearchController(categortRequesrIdArr) {
         "processStatus": 1
       },
       {
-        "categoryRequestID": 'fb23358e-2a17-4e28-9f94-a2e7b038e555',
+        "categoryRequestID": 'fb23358e-2a17-4e28-9f94-a2e7b038e655',
         "categoryId": 6358540015,
         "processStatus": 1
       }
     ]
     /* 2)  Check if exists and if not, write to db */
     let workers = await workerDbBuilder(FAKEworkersArrRes);
-    //let workers = + writeToCategoryWorkersDB(category-request-id,categoryId)
     return FAKEworkersArrRes;
   } catch (err) {
     console.log("Error runProcess - category research controller");
     console.log("Error runProcess" + err);
   }
- // return workersArrRes;
 }
 
 module.exports.categoryResearchController = categoryResearchController;

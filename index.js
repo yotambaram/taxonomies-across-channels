@@ -34,17 +34,14 @@ async function app() {
     
  
     /* 2) API Category Research /searchAsync -> Returns market research data regarding an item. */
-    const categortRequestIdObj = await categoryResearchController(input);
- //console.log("categortRequestIdObj",categortRequestIdObj)
-    // let testcategortRequesrIdObj = [
-    //   {'5718ab34-fe60-430c-b822-ff57bfea54fb': { "categoryId": 6358540011 },}
-    //   'a029f7af-b7f6-4de5-9c58-eb1b159bd993': { "categoryId": 6358540011 }
-    // ]
+    const categortRequestIdArr = await categoryResearchController(input);
+    //console.log("categortRequestIdObj",categortRequestIdArr)
+   
     
 
     /* 3) API Category Get Ready ​/category​/analysisAsync​/getReadyResults -> Get all the ready results.*/
     //whatisit ? "keep going" : "didnt write";
-    //const requestIdResultsArr = await categoryResearchGetReadyController(testcategortRequesrIdObj);
+    const requestIdResultsArr = await categoryResearchGetReadyController(categortRequestIdArr);
 
     /* 4) update DB */
     //console.log("updateDB", requestIdResultsArr)

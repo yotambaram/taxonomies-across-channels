@@ -3,13 +3,14 @@ const { Parser } = require('json2csv');
 const newLine = "\r\n";
 
 const csvWriter = (data, filePath, fields) => {
+  console.log(data)
   try {
     fs.stat(filePath, function (err, stat) {
       if (err == null) {
         //write the actual data and end with newline
         //let csv = json2csv(data, { header: false }) + newLine;
         const json2csvParser = new Parser();
-        const csv = json2csvParser.parse(myCars);
+        const csv = json2csvParser.parse();
         fs.appendFile(filePath, csv, function (err) {
           if (err) throw err;
         });

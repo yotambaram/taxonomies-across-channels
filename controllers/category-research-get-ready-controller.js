@@ -8,7 +8,7 @@ let whileLoopDevCounter = 1;
 
 
 
-async function categoryResearchGetReadyController(testMap) {
+async function categoryResearchGetReadyController() {
 
   let query = "https://api.algopix.com/v3/category/analysisAsync/getReadyResults"
   try {
@@ -21,15 +21,16 @@ async function categoryResearchGetReadyController(testMap) {
     //TODO: build a constractor
     let jobsStatus = statusChecker(categoryApiData.asyncApiStatus.jobsStatus); //Object.keys(categoryApiData.asyncApiStatus.jobsStatus)
     let jobsProcessing = categoryApiData.asyncApiStatus.jobsProcessing;
-    let howManyResults = categoryApiData.result.length;
+    let currentResults = categoryApiData.result;
+    console.log(currentResults.length)
 
     // While one of the conditions is true, save the result and call the api again.
-    while (jobsProcessing && whileLoopDevCounter < 10|| howManyResults > 0 && whileLoopDevCounter < 10|| jobsStatus && whileLoopDevCounter <10) {
+    while (jobsProcessing && whileLoopDevCounter < 10|| currentResults.length > 0 && whileLoopDevCounter < 10|| jobsStatus && whileLoopDevCounter <10) {
       console.log("While" + whileLoopDevCounter)
       // If there are results
-      if(howManyResults > 0) {
+      if(currentResults.length > 0) {
         // Build new pruducts
-        const productsArr = await productsBuilder(categoryApiData);
+        const productsArr = await productsBuilder(currentResults);
         // save pruducts to DB
         // dbCreator(productsArr);
         // // Call the api again to get new result
