@@ -14,9 +14,8 @@ async function app() {
   try {
     /* 1) GET INPUT ID NUMBERS */
     const input = [
-      { categoryId: 6358540011, numberOfResults: 100 },
-      { categoryId: 6358540011, numberOfResults: 110 },
-      { categoryId: 6358540011, numberOfResults: 120 }
+      { categoryId: 6358540011, numberOfResults: 1 },
+  
     ];
    
     /* 2) API Category Research /searchAsync -> Returns market research data regarding an item. */
@@ -28,14 +27,14 @@ async function app() {
     processTimeout2(categoryResearchGetReadyController, categortRequestIdArr, 1000 * 15)
 
     /* 4) *** API Product Analysis API GET: /searchAsync -> Returns market research data regarding an item.*/
-    // const requestsIdArr = await (requestForProductAnalysis(/*requestIdResultsArr*/)); //<- obj with request id and how many result requested
-    // console.log(requestsIdArr)
+    const requestsIdArr = await (requestForProductAnalysis(/*requestIdResultsArr*/)); //<- obj with request id and how many result requested
+    console.log(requestsIdArr)
 
     /* 5) *** API Product Analysis API GET: ​/searchAsync/getReadyResults -> Returns markets research data regarding on item*/
-    // const requestIdResultsArr = await ProductAnalysisGetReadyResults(
-    //    /*requestsIdArr*/
-    // );
-    //console.log(requestIdResultsArr)
+    const requestIdResultsArr = await ProductAnalysisGetReadyResults(
+      requestsIdArr
+    );
+    console.log(requestIdResultsArr)
 
     //////////
   } catch (err) {
